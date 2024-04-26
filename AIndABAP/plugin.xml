@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="ai.nd.abap.QueryView"
+            id="ai.nd.abap.QueryView"
+            name="ai.nd.ABAP Query"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="ai.nd.abap.RefreshCommand"
+            description="Refresh"
+            id="ai.nd.abap.RefreshCommand"
+            name="ai.nd.abap.RefreshCommand">
+      </command>
+      <command
+            defaultHandler="ai.nd.abap.SettingsHandler"
+            description="Settings"
+            id="ai.nd.abap.SettingsCommand"
+            name="ai.nd.abap.SettingsCommand">
+      </command>
+      <command
+            defaultHandler="ai.nd.abap.ExplainHandler"
+            description="Explain"
+            id="ai.nd.abap.ExplainCommand"
+            name="ai.nd.abap.ExplainCommand">
+      </command>
+      <command
+            defaultHandler="ai.nd.abap.CreateABAPHandler"
+            description="CreateABAP"
+            id="ai.nd.abap.CreateABAP"
+            name="ai.nd.abap.CreateABAP">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:ai.nd.abap.QueryView">
+         <command
+               commandId="ai.nd.abap.RefreshCommand"
+               icon="icons/Refresh.png"
+               id="ai.nd.abap.RefreshMenu"
+               label="Refresh"
+               style="push"
+               tooltip="Refresh the output screen (aka Clear)">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="ai.nd.abap.Toolbar">
+            <command
+                  commandId="ai.nd.abap.CreateABAP"
+                  icon="icons/Help book.png"
+                  id="ai.nd.abap.CreateABAP"
+                  label="AIA CreateABAP"
+                  style="push"
+                  tooltip="Create ABAP">
+            </command>
+            <command
+                  commandId="ai.nd.abap.ExplainCommand"
+                  icon="icons/view.png"
+                  id="ai.nd.abap.ExplainCommand"
+                  label="AIA Explain Coding"
+                  style="push"
+                  tooltip="Explain Code via AIndABAP">
+            </command>
+            <command
+                  commandId="ai.nd.abap.SettingsCommand"
+                  icon="icons/Repair.png"
+                  id="ai.nd.abap.SettingsCommand"
+                  label="AIA AIndABAP Settings"
+                  style="push"
+                  tooltip="Change Settings for AIndABAP">
+            </command>
+            <separator
+                  name="AIndABAP.separator_TB1">
+            </separator>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <separator
+               name="AIndABAP.separator_TB2"
+               visible="true">
+         </separator>
+         <command
+               commandId="ai.nd.abap.CreateABAP"
+               icon="icons/Help book.png"
+               id="ai.nd.abap.CreateABAP"
+               label="AIA CreateABAP Code"
+               style="push"
+               tooltip="Create ABAP Code via AIndABAP">
+         </command>
+         <command
+               commandId="ai.nd.abap.ExplainCommand"
+               icon="icons/view.png"
+               id="ai.nd.abap.ExplainCommand"
+               label="AIA Explain Coding"
+               style="push"
+               tooltip="Explain Code via AIndABAP">
+         </command>
+         <command
+               commandId="ai.nd.abap.SettingsCommand"
+               icon="icons/Repair.png"
+               id="ai.nd.abap.SettingsCommand"
+               label="AIA Settings"
+               style="push"
+               tooltip="Change Settings for AIndABAP">
+         </command>
+         <separator
+               name="AIndABAP.separator_TB3"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+ 
+</plugin>

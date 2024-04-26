@@ -1,16 +1,26 @@
+//package ai.nd.abap;
 package ai.nd.abap;
 
+//import org.eclipse.ui.IEditorPart;
+//import org.eclipse.ui.PlatformUI;
+//import org.eclipse.ui.part.MultiPageEditorPart;
+//import org.eclipse.ui.texteditor.ITextEditor;
+//import org.eclipse.jface.text.ITextSelection;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionProvider;
+//
+//import com.sap.adt.tools.abapsource.ui.sources.editors.IAbapSourcePage;
+//import com.sap.adt.tools.core.ui.editors.IAdtFormEditor;
+
+import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.ITextEditor;
-import org.eclipse.jface.text.ITextSelection;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionProvider;
-
 import com.sap.adt.tools.abapsource.ui.sources.editors.IAbapSourcePage;
 import com.sap.adt.tools.core.ui.editors.IAdtFormEditor;
 
+@SuppressWarnings("restriction")
 public class TextInput {
 
 	public String getSelectedText() {

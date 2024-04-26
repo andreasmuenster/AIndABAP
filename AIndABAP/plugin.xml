@@ -58,7 +58,7 @@
                id="ai.nd.abap.Toolbar">
             <command
                   commandId="ai.nd.abap.CreateABAP"
-                  icon="icons/Help book.png"
+                  icon="icons/Create.png"
                   id="ai.nd.abap.CreateABAP"
                   label="AIA CreateABAP"
                   style="push"
@@ -66,7 +66,7 @@
             </command>
             <command
                   commandId="ai.nd.abap.ExplainCommand"
-                  icon="icons/view.png"
+                  icon="icons/Explain.png"
                   id="ai.nd.abap.ExplainCommand"
                   label="AIA Explain Coding"
                   style="push"
@@ -94,7 +94,7 @@
          </separator>
          <command
                commandId="ai.nd.abap.CreateABAP"
-               icon="icons/Help book.png"
+               icon="icons/Create.png"
                id="ai.nd.abap.CreateABAP"
                label="AIA CreateABAP Code"
                style="push"
@@ -102,7 +102,7 @@
          </command>
          <command
                commandId="ai.nd.abap.ExplainCommand"
-               icon="icons/view.png"
+               icon="icons/Explain.png"
                id="ai.nd.abap.ExplainCommand"
                label="AIA Explain Coding"
                style="push"

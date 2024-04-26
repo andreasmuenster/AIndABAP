@@ -3,13 +3,15 @@ package ai.nd.abap;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 public class Settings {
-	
+
 	private static final String PLUGIN_ID = "ai.nd.abap.helper";
-	public static final String Version = "0.1 beta, release 240426";
 
 	private static Settings instance;
 
@@ -30,6 +32,16 @@ public class Settings {
 		return instance;
 	}
 
+	public String getCurrentVersion() {
+		Bundle bundle = FrameworkUtil.getBundle(Settings.class);
+		if (bundle != null) {
+			String version = bundle.getVersion().toString();
+			return version;
+		} else {
+			return "Unknown";
+		}
+	}
+
 	public void rememberSettings() {
 
 		IPreferenceStore store = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
@@ -41,7 +53,7 @@ public class Settings {
 	}
 
 	public void saveSettings() {
-		
+
 		this.rememberSettings();
 
 		IEclipsePreferences preferences = InstanceScope.INSTANCE.getNode(PLUGIN_ID);
@@ -50,16 +62,16 @@ public class Settings {
 		preferences.put("selectedModel", this.selectedModel);
 		preferences.put("maxToken", this.getMaxToken());
 
-        try {
+		try {
 			preferences.flush();
 		} catch (BackingStoreException e) {
 			e.printStackTrace();
-		} 	
+		}
 
 	}
 
 	public void loadSettings() {
-		
+
 		IPreferenceStore store = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		this.apiKey = store.getString("apiKey");
 		this.apiURI = store.getString("apiURI");
@@ -68,29 +80,29 @@ public class Settings {
 		getDefaultsForEmptyValues();
 
 	}
-	
+
 	private void getDefaultsForEmptyValues() {
-		if (this.apiURI == "" ) {
+		if (this.apiURI == "") {
 			this.apiURI = "https://api.openai.com/v1/chat/completions";
 		}
-		if (this.selectedModel == "" ) {
+		if (this.selectedModel == "") {
 			this.selectedModel = "gpt-3.5-turbo-0125";
 		}
-		if (this.getMaxToken() == "" ) {
+		if (this.getMaxToken() == "") {
 			this.setMaxToken("300");
 		}
 	}
-	
+
 	public void initSettings(Boolean setDefaults) {
 		apiKey = "";
 		apiURI = "";
 		selectedModel = "";
-		setMaxToken("");		
+		setMaxToken("");
 		if (setDefaults == true) {
 			this.getDefaultsForEmptyValues();
 		}
 	}
-	
+
 	public void initSettings() {
 		initSettings(false);
 	}

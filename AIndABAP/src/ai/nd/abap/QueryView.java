@@ -45,7 +45,7 @@ public class QueryView extends ViewPart {
 		}
 		if (pageContent != null) {
 			htmlTemplate = htmlTemplate.replace("<div id=\"content\"/>", "<pre>" + pageContent + "</pre>");
-			htmlTemplate = htmlTemplate.replace("<div id=\"header\" class=\"header\"/>", "<div class=\"header\">AIA - (AI)nd(A)BAP - Version " + Settings.Version + "</div>");
+			htmlTemplate = htmlTemplate.replace("<div id=\"header\" class=\"header\"/>", "<div class=\"header\">AIA - (AI)nd(A)BAP - Version " + Settings.getInstance().getCurrentVersion() + "</div>");
 		}
 		return htmlTemplate;
 	}

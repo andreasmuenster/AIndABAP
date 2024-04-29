@@ -11,6 +11,7 @@ public class CreateABAPHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		ChatAPI chatAPI = (ChatAPI) new ChatAPIGPT();
+		Settings settings = Settings.getInstance();
 		Settings settingsHandler = Settings.getInstance();
 		TextInput textEditor = new TextInput();
 
@@ -23,7 +24,7 @@ public class CreateABAPHandler extends AbstractHandler {
 			return null;
 		}
 
-		chatAPI.processRequest("Please write ABAP Coding for the following request:" + selectedText, settingsHandler);
+		chatAPI.processRequest(settings.getCreatePrompt() + selectedText, settingsHandler);
 
 		return null;
 	}

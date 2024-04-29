@@ -11,6 +11,7 @@ import org.eclipse.ui.part.ViewPart;
 
 public class QueryView extends ViewPart {
 	
+	private static final String welcomeText = "Welcome master*in, please select a text and press the required function to try me out ....";
 	private Browser fBrowser;
 	public static String ID = "ai.nd.abap.QueryView";
 
@@ -20,7 +21,7 @@ public class QueryView extends ViewPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		fBrowser = new Browser(parent, SWT.WEBKIT);
-		fBrowser.setText( this.getHTMLTemplate("Welcome master*in, please select a text and press the required function to try me out ....") );
+		fBrowser.setText( this.getHTMLTemplate(welcomeText) );
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class QueryView extends ViewPart {
 	}
 	
 	public void refresh() {
-		fBrowser.setText( getHTMLTemplate("Refreshed ...") );
+		fBrowser.setText( getHTMLTemplate(welcomeText) );
 	}
 	
 	private String getHTMLTemplate(String pageContent) {

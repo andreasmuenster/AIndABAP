@@ -18,6 +18,8 @@ public class Settings {
 	private String apiURI = "";
 	private String selectedModel = "";
 	private String maxToken = "";
+	private String explainPrompt = "";
+	private String createPrompt = "";
 
 	private Settings() {
 		super();
@@ -59,7 +61,9 @@ public class Settings {
 		preferences.put("apiKey", this.apiKey);
 		preferences.put("apiURI", this.apiURI);
 		preferences.put("selectedModel", this.selectedModel);
-		preferences.put("maxToken", this.getMaxToken());
+		preferences.put("maxToken", this.maxToken);
+		preferences.put("createPrompt", this.createPrompt);
+		preferences.put("explainPrompt", this.explainPrompt);
 
 		try {
 			preferences.flush();
@@ -75,7 +79,9 @@ public class Settings {
 		this.apiKey = store.getString("apiKey");
 		this.apiURI = store.getString("apiURI");
 		this.selectedModel = store.getString("selectedModel");
-		this.setMaxToken(store.getString("maxToken"));
+		this.maxToken = store.getString("maxToken");
+		this.createPrompt = store.getString("createPrompt");
+		this.explainPrompt = store.getString("explainPrompt");
 		getDefaultsForEmptyValues();
 
 	}
@@ -90,6 +96,13 @@ public class Settings {
 		if (this.getMaxToken() == "") {
 			this.setMaxToken("300");
 		}
+		if (this.createPrompt == "") {
+			createPrompt = "Please write ABAP Coding for the following request:";
+		}
+		if (this.explainPrompt == "") {
+			this.explainPrompt = "Please explain the following ABAP-Coding:";
+		}
+
 	}
 
 	public void initSettings(Boolean setDefaults) {
@@ -97,6 +110,8 @@ public class Settings {
 		apiURI = "";
 		selectedModel = "";
 		setMaxToken("");
+		setExplainPrompt("");
+		setCreatePrompt("");
 		if (setDefaults == true) {
 			this.getDefaultsForEmptyValues();
 		}
@@ -136,5 +151,21 @@ public class Settings {
 
 	public void setMaxToken(String maxToken) {
 		this.maxToken = maxToken;
+	}
+
+	public String getExplainPrompt() {
+		return explainPrompt;
+	}
+
+	public void setExplainPrompt(String explainPrompt) {
+		this.explainPrompt = explainPrompt;
+	}
+
+	public String getCreatePrompt() {
+		return createPrompt;
+	}
+
+	public void setCreatePrompt(String createPrompt) {
+		this.createPrompt = createPrompt;
 	}
 }

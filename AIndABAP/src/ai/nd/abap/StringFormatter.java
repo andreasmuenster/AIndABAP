@@ -16,6 +16,8 @@ public class StringFormatter {
 		escaped = escaped.replaceAll("\n", "\\\\n");
 		// Replace carriage return characters
 		escaped = escaped.replaceAll("\r", "\\\\r");
+		// Replace tabs with spaces
+		escaped = escaped.replaceAll("\t", " ");
 		return escaped;
 	}
 }

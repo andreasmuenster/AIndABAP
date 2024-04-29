@@ -28,6 +28,8 @@ public class SettingsHandler extends AbstractHandler {
 		private Text apiURI;
 		private Text modelText;
 		private Text maxToken;
+		private Text promptCreateText;
+		private Text promptExplainText;
 
 		protected SettingsDialog(Shell parentShell) {
 			super(parentShell, "Settings", null, "Edit Settings", MessageDialog.INFORMATION,
@@ -49,19 +51,32 @@ public class SettingsHandler extends AbstractHandler {
 			apiKeyLabel.setText("API Key:");
 			apiKeyText = new Text(composite, SWT.BORDER);
 			apiKeyText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-			apiKeyText.setEchoChar('*'); 
+			apiKeyText.setEchoChar('*');
 
 			Label modelLabel = new Label(composite, SWT.NONE);
 			modelLabel.setText("Model:");
 			modelText = new Text(composite, SWT.BORDER);
 			modelText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-			
 
 			Label maxTokenLabel = new Label(composite, SWT.NONE);
 			maxTokenLabel.setText("Max. Token:");
 			maxToken = new Text(composite, SWT.BORDER);
-			maxToken.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));			
-			
+			maxToken.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
+			Label displayTextLabel = new Label(composite, SWT.NONE);
+			displayTextLabel.setText("Create (pre) prompt:");		
+			promptCreateText = new Text(composite, SWT.BORDER | SWT.MULTI);
+			GridData gridDataCreateText = new GridData(SWT.FILL, SWT.CENTER, true, false);
+			gridDataCreateText.heightHint = 5 * promptCreateText.getLineHeight();
+			promptCreateText.setLayoutData(gridDataCreateText);
+
+			Label explainTextLabel = new Label(composite, SWT.NONE);
+			explainTextLabel.setText("Explain (pre) prompt:");
+			GridData gridDataExplainText = new GridData(SWT.FILL, SWT.CENTER, true, false);
+			gridDataExplainText.heightHint = 5 * promptCreateText.getLineHeight();			
+			promptExplainText = new Text(composite, SWT.BORDER | SWT.MULTI);
+			promptExplainText.setLayoutData(gridDataExplainText);
+
 			Settings settings = Settings.getInstance();
 			settings.loadSettings();
 
@@ -69,6 +84,8 @@ public class SettingsHandler extends AbstractHandler {
 			apiKeyText.setText(settings.getApiKey());
 			modelText.setText(settings.getSelectedModel());
 			maxToken.setText(settings.getMaxToken());
+			promptCreateText.setText(settings.getCreatePrompt());
+			promptExplainText.setText(settings.getExplainPrompt());
 
 			return composite;
 		}
@@ -81,7 +98,9 @@ public class SettingsHandler extends AbstractHandler {
 				settings.setApiURI(apiURI.getText());
 				settings.setSelectedModel(modelText.getText());
 				settings.setMaxToken(maxToken.getText());
-				
+				settings.setCreatePrompt(promptCreateText.getText());
+				settings.setExplainPrompt(promptExplainText.getText());
+
 				settings.saveSettings();
 				super.buttonPressed(buttonId);
 			} else if (buttonId == 2) { // Default values
@@ -91,6 +110,8 @@ public class SettingsHandler extends AbstractHandler {
 				apiKeyText.setText(settings.getApiKey());
 				modelText.setText(settings.getSelectedModel());
 				maxToken.setText(settings.getMaxToken());
+				promptCreateText.setText(settings.getCreatePrompt());
+				promptExplainText.setText(settings.getExplainPrompt());				
 			} else {
 				super.buttonPressed(buttonId);
 			}

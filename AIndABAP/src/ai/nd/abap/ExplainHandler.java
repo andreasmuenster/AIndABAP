@@ -12,6 +12,7 @@ public class ExplainHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		ChatAPI chatAPI = (ChatAPI) new ChatAPIGPT();
+		Settings settings = Settings.getInstance();
 		Settings settingsHandler = Settings.getInstance();
 		TextInput textEditor = new TextInput();
 
@@ -26,7 +27,7 @@ public class ExplainHandler extends AbstractHandler {
 
 		System.out.println("Selected Text:" + selectedText);
 
-		chatAPI.processRequest("Please explain the following ABAP-Coding:" + selectedText, settingsHandler);
+		chatAPI.processRequest(settings.getExplainPrompt() + selectedText, settingsHandler);
 
 		return null;
 	}

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: AIndABAP
 Bundle-SymbolicName: ai.nd.abap.helper;singleton:=true
-Bundle-Version: 0.9.0.20240426_v3
+Bundle-Version: 0.9.1.20240429_v1
 Export-Package: ai.nd.abap,
  org.json.simple,
  org.json.simple.parser
